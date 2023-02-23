@@ -23,7 +23,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "homerow mods";
             #binding-cells = <2>;
-            tapping_term_ms = <500>;
+            tapping_term_ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
@@ -54,13 +54,13 @@
             layers = <0>;
             timeout-ms = <50>;
             key-positions = <21 22>;
-            bindings = <&kp V>;
+            bindings = <&kp B>;
         };
         combo_y {
             layers = <0>;
             timeout-ms = <50>;
             key-positions = <23 24>;
-            bindings = <&kp B>;
+            bindings = <&kp K>;
         };
 
         combo_slash {
@@ -113,8 +113,8 @@
             bindings = <
                 &kp Q      &kp W      &kp F       &kp P           &kp G        &kp J            &kp L          &kp U       &kp Y      &kp SEMI
                 &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHFT T     &kp D        &kp H            &hm RSHFT N    &hm RCTRL E &hm LALT I &hm RGUI O
-                           &kp Z      &kp X       &kp C                                         &kp K          &kp M  &kp COMMA
-                                                  &lt VAL_L TAB  &lt NAV_L RET &lt NUM_L SPACE  &lt SYM_L BKSP
+                           &kp Z      &kp X       &kp C                                         &kp M          &kp COMMA  &kp DOT
+                                                  &lt VAL_L TAB  &lt NAV_L RET &lt NUM_L SPACE  &kp BKSP
             >;
         };
 
@@ -131,10 +131,10 @@
         nav_layer {
             label = "Nav";
             bindings = <
-                &trans     &trans     &trans      &trans          &trans       &trans           &kp HOME       &kp UARW  &kp PG_UP  &trans
+                &kp ESC     &trans     &trans      &trans          &trans       &trans           &kp HOME       &kp UARW  &kp PG_UP  &trans
                 &trans     &trans     &trans      &kp LBRC        &kp RBRC     &kp LARW         &kp DARW       &kp UARW  &kp RARW   &trans
                            &trans     &trans      &trans                                        &kp MINUS      &kp EQUAL &kp SLASH
-                                                  &trans          &trans       &kp ESC          &kp DEL
+                                                  &trans          &trans       &kp TAB          &kp DEL
             >;
         };
 
