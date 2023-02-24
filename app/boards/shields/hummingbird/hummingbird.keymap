@@ -193,8 +193,8 @@
         hidden_layer {
             label = "Hidden Mods";
             bindings = <
-                &trans   &kp LS(N1) &kp LS(N2)  &kp LS(N3)      &kp LS(N4)      &kp LS(N5) &kp LS(N6)  &kp LS(N7)      &kp LS(N8)     &bootloader
-                &trans   &kp LS(N5) &kp LS(N6)  &kp LS(N7)      &kp LS(N8)      &trans         &trans      &trans     &bootloader
+                &trans   &kp LS(N1) &kp LS(N2)  &kp LS(N3)      &kp LS(N4)      &kp LS(N5) &kp LS(N6)  &kp LS(N7) &kp LS(N8)     &kp LS(QUOT)
+                &trans   &kp LS(N5) &kp LS(N6)  &kp LS(N7)      &kp LS(N8)      &trans     &trans      &trans     &kp LS(SEMI)   &kp LS(SEMI)
                            &kp F11 &kp F12  &kp F13                                    &trans         &trans      &trans
                                                   &trans      &trans     &trans          &trans
             >;
