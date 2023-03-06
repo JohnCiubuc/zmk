@@ -14,6 +14,8 @@
 #define NUM_L 4
 #define SYM_L 5
 #define HIDDEN_L 6
+#define GAME_ONE_L 7
+#define COMBO_DELAY 25
 
 /*
     default_transform: keymap_transform_0 {
@@ -22,7 +24,7 @@
         rows = <6>;
         map = <
     RC(0,0) RC(1,0) RC(0,1) RC(1,1) RC(0,2) RC(1,2) RC(0,3) RC(1,3) RC(0,4) RC(1,4)
-    RC(2,0) RC(3,0) RC(2,1) RC(3,1) RC(2,2) RC(3,2) RC(2,3) RC(3,3) RC(2,4) RC(3,4)
+    10RC(2,0) RC(3,0) RC(2,1) RC(3,1) RC(2,2) RC(3,2) RC(2,3) RC(3,3) RC(2,4) RC(3,4)
             RC(4,0) RC(5,0) RC(4,1)                 RC(5,2) RC(4,3) RC(5,3)
                           RC(5,1) RC(4,2)       RC(5,4) RC(4,4)
         >;
@@ -55,66 +57,97 @@
     combos {
         compatible = "zmk,combos";
         combo_hidden {
-            timeout-ms = <50>;
+            timeout-ms = <COMBO_DELAY>;
             key-positions = <0 10>;
             bindings = <&mo HIDDEN_L>;
         };
-        combo_quo {
-            timeout-ms = <50>;
-            key-positions = <18 19>;
-            bindings = <&kp QUOT>;
-        };
-        combo_z {
+        combo_fast_shift_i {
             layers = <0>;
-            timeout-ms = <50>;
+            timeout-ms = <150>;
+            key-positions = <10 18>;
+            bindings = <&kp LS(I)>;
+        };
+        combo_fast_ctrlv {
+            layers = <0>;
+            timeout-ms = <COMBO_DELAY>;
+            key-positions = <20 26>;
+            bindings = <&kp LC(V)>;
+        };
+        combo_fast_ctrlc {
+            layers = <0>;
+            timeout-ms = <COMBO_DELAY>;
+            key-positions = <22 26>;
+            bindings = <&kp LC(C)>;
+        };
+        combo_vone {
+            layers = <0>;
+            timeout-ms = <COMBO_DELAY>;
             key-positions = <20 21>;
             bindings = <&kp V>;
         };
-        combo_b {
+        combo_bone {
             layers = <0>;
-            timeout-ms = <50>;
+            timeout-ms = <COMBO_DELAY>;
             key-positions = <21 22>;
             bindings = <&kp B>;
         };
-        combo_y {
+        combo_kone {
             layers = <0>;
-            timeout-ms = <50>;
+            timeout-ms = <COMBO_DELAY>;
             key-positions = <23 24>;
             bindings = <&kp K>;
         };
-
-        combo_slash {
+        combo_vtwo {
             layers = <0>;
-            timeout-ms = <50>;
-            key-positions = <24 25>;
-            bindings = <&kp DOT>;
+            timeout-ms = <COMBO_DELAY>;
+            key-positions = <11 12>;
+            bindings = <&kp V>;
         };
-
-        combo_z_qwer {
-            layers = <1>;
-            timeout-ms = <50>;
-            key-positions = <20 21>;
-            bindings = <&kp Z>;
-        };
-        combo_b_qwer {
-            layers = <1>;
-            timeout-ms = <50>;
-            key-positions = <21 22>;
+        combo_btwo {
+            layers = <0>;
+            timeout-ms = <COMBO_DELAY>;
+            key-positions = <12 13>;
             bindings = <&kp B>;
         };
-        combo_y_qwer {
-            layers = <1>;
-            timeout-ms = <50>;
-            key-positions = <23 24>;
-            bindings = <&kp Y>;
+        combo_ktwo {
+            layers = <0>;
+            timeout-ms = <COMBO_DELAY>;
+            key-positions = <16 17>;
+            bindings = <&kp K>;
         };
 
-        combo_slash_qwer {
+        combo_return_to_cole {
             layers = <1>;
             timeout-ms = <50>;
-            key-positions = <24 25>;
-            bindings = <&kp SLASH>;
+            key-positions = <26 27 28 29>;
+            bindings = <&to DEF_L>;
         };
+
+        // combo_z_qwer {
+        //     layers = <1>;
+        //     timeout-ms = <50>;
+        //     key-positions = <20 21>;
+        //     bindings = <&kp Z>;
+        // };
+        // combo_b_qwer {
+        //     layers = <1>;
+        //     timeout-ms = <50>;
+        //     key-positions = <21 22>;
+        //     bindings = <&kp B>;
+        // };
+        // combo_y_qwer {
+        //     layers = <1>;
+        //     timeout-ms = <50>;
+        //     key-positions = <23 24>;
+        //     bindings = <&kp Y>;
+        // };
+
+        // combo_slash_qwer {
+        //     layers = <1>;
+        //     timeout-ms = <50>;
+        //     key-positions = <24 25>;
+        //     bindings = <&kp SLASH>;
+        // };
     };
 
 
@@ -142,21 +175,20 @@
         };
 
         qwerty_layer {
-            label = "qwerty";
+            label = "qwerty_plover";
             bindings = <
-                &kp Q      &kp W      &kp E       &kp R           &kp T        &kp H            &kp U          &kp I       &kp O      &kp P
-                &hm LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F     &kp G        &kp N            &hm RSHFT J    &hm RCTRL K &hm LALT L &hm RGUI QUOT
+                &kp Q      &kp W      &kp E       &kp R           &kp T        &kp U            &kp I          &kp O       &kp P      &kp LBKT
+                &hm LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F     &kp G        &kp J            &hm RSHFT K    &hm RCTRL L &hm LALT SEMI &hm RGUI DOT
                            &kp X      &kp C       &kp V                                         &kp M          &kp COMMA  &kp DOT
-                                                  &lt VAL_L TAB  &lt NAV_L RET &lt NUM_L SPACE  &lt SYM_L BKSP
+                                                  &lt VAL_L C  &lt NAV_L V &lt NUM_L N  &lt SYM_L M
             >;
         };
-
 
         nav_layer {
             label = "Nav";
             bindings = <
                 &kp ESC     &trans     &trans      &trans          &trans       &trans           &kp HOME       &kp UARW  &kp PG_UP  &kp QUOT
-                &kp BSLH    &trans     &trans      &kp LBKT        &kp RBKT     &kp LARW         &kp DARW       &kp UARW  &kp RARW   &kp QUOT
+                &kp BSLH    &trans    &kp LBKT   &kp RBKT        &kp RBKT     &kp LARW         &kp DARW       &kp UARW  &kp RARW   &kp QUOT
                            &trans     &trans      &trans                                        &kp MINUS      &kp EQUAL &kp SLASH
                                                   &trans          &trans       &kp TAB          &kp DEL
             >;
@@ -164,9 +196,9 @@
         naval_layer {
             label = "Naval";
             bindings = <
-                &to QWE_L     &kp A      &trans      &trans          &trans       &trans         &kp C_BRI_DEC &kp C_BRI_INC &kp PG_UP  &trans
-                &to DEF_L     &trans     &trans      &kp LPAR        &kp RPAR     &kp K_MUTE     &kp K_VOL_DN  &kp K_VOL_UP  &kp RARW   &trans
-                              &trans     &trans      &trans                                      &kp PLUS      &kp EQUAL     &kp SLASH
+                &to QWE_L     &to GAME_ONE_L      &trans      &trans          &trans       &trans         &kp C_BRI_DEC &kp C_BRI_INC &kp PG_UP  &trans
+                &to DEF_L     &trans     &kp LPAR    &kp RPAR        &kp RPAR     &kp K_MUTE     &kp K_VOL_DN  &kp K_VOL_UP  &kp RARW   &trans
+                              &kp LC(V)  &kp LC(X)   &kp LC(C)                                      &kp PLUS      &kp EQUAL     &kp SLASH
                                                   &trans          &trans       &kp ESC          &kp DEL
             >;
         };
@@ -195,8 +227,18 @@
             bindings = <
                 &trans   &kp LS(N1) &kp LS(N2)  &kp LS(N3)      &kp LS(N4)      &kp LS(N5) &kp LS(N6)  &kp LS(N7) &kp LS(N8)     &kp LS(QUOT)
                 &trans   &kp LS(N5) &kp LS(N6)  &kp LS(N7)      &kp LS(N8)      &trans     &trans      &trans     &kp LS(SEMI)   &kp LS(SEMI)
-                           &kp F11 &kp F12  &kp F13                                    &trans         &trans      &trans
+                         &trans     &trans      &trans                                      &trans         &trans      &trans
                                                   &trans      &trans     &trans          &trans
+            >;
+        };
+
+        game_one_layer {
+            label = "game_one";
+            bindings = <
+                &kp N1      &kp N2      &kp N3       &kp N4          &kp N5        &kp U            &kp I          &kp O       &kp P      &kp ESC
+                &kp F1      &kp F2      &kp F3      &kp F4          &kp F5        &kp J            &hm RSHFT K    &hm RCTRL L &hm LALT SEMI &kp SPACE
+                           &kp TAB      &kp TAB       &kp TAB                                         &kp M          &kp COMMA  &kp DOT
+                                                  &lt VAL_L C  &kp RET &lt NUM_L N  &to DEF_L
             >;
         };
     };
